@@ -205,6 +205,6 @@ include_directories(
 ## Add folders to be run by python nosetests
 # catkin_add_nosetests(test)
 
-add_executable(picker src/picker.cpp)
-target_link_libraries(picker ${catkin_LIBRARIES})
-add_dependencies(picker ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+add_executable(pick_objects src/picker.cpp)
+target_link_libraries(pick_objects ${catkin_LIBRARIES})
+add_dependencies(pick_objects ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})

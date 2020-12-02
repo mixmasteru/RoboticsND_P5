@@ -20,7 +20,7 @@ int main(int argc, char** argv){
     move_base_msgs::MoveBaseGoal goal;
 
     // set up the frame parameters
-    goal.target_pose.header.frame_id = "base_link";
+    goal.target_pose.header.frame_id = "map";
     goal.target_pose.header.stamp = ros::Time::now();
 
     // Define a position and orientation for the robot to reach
@@ -35,8 +35,36 @@ int main(int argc, char** argv){
     ac.waitForResult();
 
     // Check if the robot reached its goal
-    if(ac.getState() == actionlib::SimpleClientGoalState::SUCCEEDED)
+    if(ac.getState() == actionlib::SimpleClientGoalState::SUCCEEDED){
         ROS_INFO("Hooray, the base moved 1 meter forward");
+        // Wait 5 sec for move_base action server to come up
+        while(!ac.waitForServer(ros::Duration(5.0))){
+            ROS_INFO("Waiting in Pickup Zone");
+        }
+    }
+    else
+        ROS_INFO("The base failed to move forward 1 meter for some reason");
+
+    // Define a position and orientation for the robot to reach
+    goal.target_pose.pose.position.x = 2.0;
+    goal.target_pose.pose.position.x = 2.0;
+    goal.target_pose.pose.orientation.w = 1.0;
+
+    // Send the goal position and orientation for the robot to reach
+    ROS_INFO("Sending goal");
+    ac.sendGoal(goal);
+
+    // Wait an infinite time for the results
+    ac.waitForResult();
+
+    // Check if the robot reached its goal
+    if(ac.getState() == actionlib::SimpleClientGoalState::SUCCEEDED){
+        ROS_INFO("Hooray, the base moved 1 meter forward");
+        // Wait 5 sec for move_base action server to come up
+        while(!ac.waitForServer(ros::Duration(5.0))){
+            ROS_INFO("Waiting in Pickup Zone");
+        }
+    }
     else
         ROS_INFO("The base failed to move forward 1 meter for some reason");
 
