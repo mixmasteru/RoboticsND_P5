@@ -9,7 +9,7 @@ docker run -d \
     --env="DISPLAY" \
     --env="QT_X11_NO_MITSHM=1" \
     --volume="/tmp/.X11-unix:/tmp/.X11-unix:rw" \
-    --volume="~/development/udacity/ros/$FOLDER:/root/ros:rw" \
+    --volume="/home/mixmasteru/development/udacity/ros/$FOLDER:/root/ros:rw" \
     -p 127.0.0.1:2222:22 \
     myros:xenial
 

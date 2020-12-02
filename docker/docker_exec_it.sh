@@ -1,15 +1,11 @@
 #!/bin/bash
 #PROG=${1:-rqt}
 PROG="$@"
-#PROG="'"$PROG"'"
-#echo $PROG
-#exit
+CONTAINER="xenialros"
 
-export containerId=$(docker ps -l -q)
-xhost +local:`docker inspect --format='' $containerId`
-#docker exec -it xenialros /bin/bash -c "'"$PROG"'"
-docker exec -it xenialros /bin/bash
-#docker start $containerId
+export containerId=$(docker ps -fname=$CONTAINER -q)
+xhost +local:`docker inspect --format='{{ .Config.Hostname }}' $containerId`
+docker exec -it $CONTAINER /bin/bash
 
 
 # 1 Pipe from a file
