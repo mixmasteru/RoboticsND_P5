@@ -33,9 +33,9 @@
               -x $(arg x) -y $(arg y) -z $(arg z)
               -R $(arg roll) -P $(arg pitch) -Y $(arg yaw)"/>
 
-  <!--launch rviz-->
+  <!--launch rviz
   <node name="rviz" pkg="rviz" type="rviz" respawn="false" args="-d $(find my_robot)/my_robot.rviz"/>
-
+  -->
   <!-- The drive_bot node
   <node name="drive_bot" type="drive_bot" pkg="wall_chaser" output="screen">
   </node>-->
