@@ -10,6 +10,8 @@ add_compile_options(-std=c++11)
 find_package(catkin REQUIRED COMPONENTS
   roscpp
   visualization_msgs
+  actionlib
+  move_base_msgs
 )
 
 ## System dependencies are found with CMake's conventions
@@ -206,3 +208,4 @@ include_directories(
 
 add_executable(add_markers src/add_markers.cpp)
 target_link_libraries(add_markers ${catkin_LIBRARIES})
+add_dependencies(add_markers ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
