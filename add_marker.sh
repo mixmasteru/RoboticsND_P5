@@ -4,7 +4,7 @@ DOCKER="docker exec -it xenialros /bin/bash -c '#CMD#'"
 CMDS=('roslaunch my_robot world.launch'
 'roslaunch my_robot amcl.launch'
 'roslaunch my_robot view_navigation.launch'
-'roslaunch add_markers add_markers.launch'
+'roslaunch add_markers add_markers_demo.launch'
 )
 
 USE_DOCKER=false

@@ -28,7 +28,7 @@ void sendTargetAndWait(float x, float y, float w){
 
     // Check if the robot reached its goal
     if(ac.getState() == actionlib::SimpleClientGoalState::SUCCEEDED){
-        ROS_INFO("Hooray, the base moved 1 meter forward");
+        ROS_INFO("Hooray, you got it!");
         // Wait 5 sec for move_base action server to come up
         while(!ac.waitForServer(ros::Duration(5.0))){
             ROS_INFO("Waiting in Pickup Zone");
@@ -52,7 +52,6 @@ int main(int argc, char** argv){
 
     sendTargetAndWait(0.0,3.0, 1.0);
     sendTargetAndWait(0.5,-4.0, 1.0);
-
 
     return 0;
 }
